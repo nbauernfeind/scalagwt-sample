@@ -205,9 +205,9 @@ class ContactDatabase private () {
   val dataProvider = new ListDataProvider[ContactInfo]()
 
   val categories = {
-    val constants: DatabaseConstants = GWT.create(classOf[DatabaseConstants])
-    val catNames = constants.contactDatabaseCategories
-    catNames.map(new Category(_))
+    //val constants: DatabaseConstants = GWT.create(classOf[DatabaseConstants])
+    //val catNames = constants.contactDatabaseCategories.map(new Category(_))
+    List("Family","Friends","Coworkers","Businesses","Contacts").map(new Category(_))
   }
 
   /**

@@ -18,6 +18,7 @@ package com.google.gwt.sample.showcase.client
 
 import com.google.gwt.event.logical.shared._
 import com.google.gwt.event.dom.client._
+import com.google.gwt.view.client.SelectionChangeEvent
 
 /**
  * Provides implicit conversions that allow functions to be substituted where handlers are called for.
@@ -142,3 +143,4 @@ trait ScrollHandlers {
   }
 }
 object ScrollHandlers extends ScrollHandlers
+

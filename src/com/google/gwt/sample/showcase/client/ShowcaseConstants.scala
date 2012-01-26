@@ -54,7 +54,7 @@ import com.google.gwt.sample.showcase.client.content.widgets.CwDatePicker
 import com.google.gwt.sample.showcase.client.content.widgets.CwFileUpload
 import com.google.gwt.sample.showcase.client.content.widgets.CwHyperlink
 import com.google.gwt.sample.showcase.client.content.widgets.CwRadioButton
-import content.cell.CwCellList
+import content.cell.CwCellListCompanion
 
 object ShowcaseConstants {
   /**
@@ -114,7 +114,7 @@ trait ShowcaseConstants extends Constants with
     CwConstantsExample.CwConstants with CwConstantsWithLookupExample.CwConstants with
     CwDictionaryExample.CwConstants with CwDecoratorPanel.CwConstants with
     CwAnimation.CwConstants with CwDatePicker.CwConstants with
-    CwPluralFormsExample.CwConstants with CwCellList.CwConstants {
+    CwPluralFormsExample.CwConstants with CwCellListCompanion.CwConstants {
 
   def categoryI18N(): String
 
