@@ -2,13 +2,13 @@ package com.google.gwt.sample.showcase.client
 
 /*
  * Copyright 2008 Google Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -87,6 +87,7 @@ import com.google.gwt.user.client.ui.ToggleButton
 import com.google.gwt.user.client.ui.Tree
 import com.google.gwt.user.client.ui.TreeItem
 import com.google.gwt.user.client.ui.VerticalPanel
+import content.cell.CwCellList
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.Map
@@ -317,6 +318,11 @@ class Showcase extends EntryPoint {
       List(new CwGrid(constants), new CwFlexTable(constants)) foreach {
          setupMainMenuOption(catTables, _, images.catTables)
       }
+
+     val cellWidgets = mainMenu.addItem("Cell Widgets")
+     List(new CwCellList(constants)) foreach {
+       setupMainMenuOption(cellWidgets, _, images.catTables)
+     }
 
       // Internationalization
       val catI18N = mainMenu.addItem(constants.categoryI18N)

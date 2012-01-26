@@ -2,13 +2,13 @@ package com.google.gwt.sample.showcase.client
 
 /*
  * Copyright 2008 Google Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -29,6 +29,7 @@ object Handlers extends ChangeHandlers
   with SelectionHandlers
   with ValueChangeHandlers
   with OpenHandlers
+  with ScrollHandlers
 
 trait ChangeHandlers {
   implicit def fn2changeHandler(fn: ChangeEvent => Unit): ChangeHandler =
@@ -128,4 +129,16 @@ trait OpenHandlers {
 }
 object OpenHandlers extends OpenHandlers
 
+trait ScrollHandlers {
+  implicit def fn2scrollHandler(fn: ScrollEvent => Unit): ScrollHandler =
+    new ScrollHandler {
+      def onScroll(event: ScrollEvent): Unit = fn(event)
+    }
+  implicit def enrichHasScrollHandlers(o: HasScrollHandlers): RichHasScrollHandlers =
+    new RichHasScrollHandlers(o)
 
+  class RichHasScrollHandlers(o: HasScrollHandlers) {
+    def onScroll(fn: ScrollEvent => Unit) = o.addScrollHandler(fn)
+  }
+}
+object ScrollHandlers extends ScrollHandlers
