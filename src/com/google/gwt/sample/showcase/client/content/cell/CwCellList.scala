@@ -114,7 +114,6 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
    */
   @ShowcaseData
   @UiField
-  @BeanProperty
   var generateButton: Button = null
 
   /**
@@ -122,7 +121,6 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
    */
   @ShowcaseData
   @UiField
-  @BeanProperty
   var pagerPanel: ShowMorePagerPanel = null
 
   /**
