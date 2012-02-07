@@ -22,6 +22,7 @@
             <tr>
                 <td valign='top' align='center'>
                     <s:ShowMorePagerPanel addStyleNames='{style.scrollable}' ui:field='pagerPanel'/>
+                    <!--<s:ShowMorePagerPanel addStyleNames='{style.scrollable}'/>-->
                     <!--<s:RangeLabelPager-->
                     <!--ui:field='rangeLabelPager'/>-->
                 </td>
@@ -30,6 +31,7 @@
                     <!--ui:field='contactForm'/>-->
                     <br/>
                     <g:Button ui:field='generateButton'>
+                    <!--<g:Button>-->
                         <ui:msg key='cwCellListGenerateButton'>Generate 50 Contacts</ui:msg>
                     </g:Button>
                 </td>

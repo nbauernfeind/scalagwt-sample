@@ -1,12 +1,12 @@
 /*
  * Copyright 2009 Google Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -111,24 +111,25 @@ class GwtDlx extends EntryPoint {
    implicit private def fn2command(f: () => Unit): ScheduledCommand =
      new ScheduledCommand { def execute() = f() }
 
-   private def solve(board: Array[Array[Int]]) = {
-      import Scheduled._
-      sched {
-         val result = (Sudoku(board)).solve
-         ajax.setVisible(false)
-         result match {
-            case None => noSolution.setVisible(true)
-            case Some(soln) => {
-               noSolution.setVisible(false)
-               for (r <- 0 until soln.length) {
-                  for (c <- 0 until soln(r).length) {
-                     getBox(r, c).setValue(soln(r)(c) + "")
-                  }
-               }
-               ajax.setVisible(false)
-            }
-         }
-      }
+   private def solve(board: Array[Array[Int]]) {
+     val a = 10
+//      import Scheduled._
+//      sched {
+//         val result = (Sudoku(board)).solve
+//         ajax.setVisible(false)
+//         result match {
+//            case None => noSolution.setVisible(true)
+//            case Some(soln) => {
+//               noSolution.setVisible(false)
+//               for (r <- 0 until soln.length) {
+//                  for (c <- 0 until soln(r).length) {
+//                     getBox(r, c).setValue(soln(r)(c) + "")
+//                  }
+//               }
+//               ajax.setVisible(false)
+//            }
+//         }
+//      }
    }
 }
 

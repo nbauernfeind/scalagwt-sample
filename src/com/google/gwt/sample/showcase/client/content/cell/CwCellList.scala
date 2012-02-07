@@ -29,11 +29,12 @@ import com.google.gwt.sample.showcase.client.ShowcaseAnnotations.{ShowcaseData, 
 import com.google.gwt.user.cellview.client.CellList
 import com.google.gwt.user.cellview.client.HasKeyboardPagingPolicy.KeyboardPagingPolicy
 import com.google.gwt.user.cellview.client.HasKeyboardSelectionPolicy.KeyboardSelectionPolicy
-import com.google.gwt.view.client.SingleSelectionModel
 import com.google.gwt.event.dom.client.ClickEvent
 import com.google.gwt.sample.showcase.client.Handlers._
 import com.google.gwt.user.client.ui.{HTML, Button, AbstractImagePrototype, Widget}
 import beans.BeanProperty
+import com.google.gwt.resources.client.ClientBundle.Source
+import com.google.gwt.view.client.{SelectionChangeEvent, SingleSelectionModel}
 
 /**
  * Companion Object
@@ -61,8 +62,7 @@ object CwCellListCompanion {
     /**
      * The html of the image used for contacts.
      */
-    //private[this] val imageHtml = AbstractImagePrototype.create(image).getHTML
-    private[this] val imageHtml = ""
+    private[this] val imageHtml = AbstractImagePrototype.create(image).getHTML
 
     def render(context: Context, value: ContactInfo, sb: SafeHtmlBuilder) {
       // Value can be null, so do a null check..
@@ -107,7 +107,7 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
    */
   //  @ShowcaseData
   //  @UiField
-  //  var contactForm: ContactInfoForm = null
+//    var contactForm: ContactInfoForm = null
 
   /**
    * The button used to generate more contacts.
@@ -127,8 +127,8 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
    * The pager used to display the current range.
    */
   //  @ShowcaseData
-  //  @UiField
-  //  var rangeLabelPager: RangeLabelPager = null
+//    @UiField
+//    var rangeLabelPager: RangeLabelPager = null
 
   /**
    * The CellList.
@@ -140,43 +140,42 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
    * Initialize this example.
    */
   def onInitialize(): Widget = {
-    //val images: Images = GWT.create(classOf[Images])
+    val images: Images = GWT.create(classOf[Images])
 
     // Create a CellList.
-    //val contactCell = new ContactCell(images.contact)
-    val contactCell = new ContactCell(null)
+    val contactCell = new ContactCell(images.contact)
 
     // Set a key provider that provides a unique key for each contact. If key is
     // used to identify contacts when fields (such as the name and address)
     // change.
-    cellList = new CellList[ContactInfo](contactCell, ContactDatabase.KEY_PROVIDER)
-    cellList.setPageSize(30)
-    //cellList.setKeyboardPagingPolicy(KeyboardPagingPolicy.INCREASE_RANGE)
-    //cellList.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION)
+//    cellList = new CellList[ContactInfo](contactCell, ContactDatabase.KEY_PROVIDER)
+//    cellList.setPageSize(30)
+//    cellList.setKeyboardPagingPolicy(KeyboardPagingPolicy.INCREASE_RANGE)
+//    cellList.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION)
 
     // Add a selection model so we can select cells.
-    val selectionModel = new SingleSelectionModel[ContactInfo](ContactDatabase.KEY_PROVIDER)
-    cellList.setSelectionModel(selectionModel);
-    //    selectionModel.addSelectionChangeHandler((_: SelectionChangeEvent) => {
-    //        contactForm.setContact(selectionModel.getSelectedObject());
-    //    })
+//    val selectionModel = new SingleSelectionModel[ContactInfo](ContactDatabase.KEY_PROVIDER)
+//    cellList.setSelectionModel(selectionModel);
+//        selectionModel.addSelectionChangeHandler((_: SelectionChangeEvent) => {
+//            contactForm.setContact(selectionModel.getSelectedObject());
+//        })
 
     // Create the UiBinder.
     val uiBinder: Binder = GWT.create(classOf[Binder])
     val widget = uiBinder.createAndBindUi(this)
 
     // Add the CellList to the data provider in the database.
-    ContactDatabase.getContactDatabase.addDataDisplay(cellList);
+//    ContactDatabase.getContactDatabase.addDataDisplay(cellList);
 
     // Set the cellList as the display of the pagers. This example has two
     // pagers. pagerPanel is a scrollable pager that extends the range when the
     // user scrolls to the bottom. rangeLabelPager is a pager that displays the
     // current range, but does not have any controls to change the range.
-    pagerPanel.setDisplay(cellList);
+//    pagerPanel.setDisplay(cellList);
     //    rangeLabelPager.setDisplay(cellList);
 
     // Handle events from the generate button.
-    generateButton.addClickHandler((_: ClickEvent) => ContactDatabase.getContactDatabase.generateContacts(50))
+//    generateButton.addClickHandler((_: ClickEvent) => ContactDatabase.getContactDatabase.generateContacts(50))
 
     widget
   }
