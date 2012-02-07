@@ -136,6 +136,8 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
   @ShowcaseData
   private[this] var cellList: CellList[ContactInfo] = null
 
+  @ShowcaseData
+  private[this] var tmp: String = ""
   /**
    * Initialize this example.
    */
@@ -148,34 +150,40 @@ class CwCellList(constants: CwCellListCompanion.CwConstants) extends ContentWidg
     // Set a key provider that provides a unique key for each contact. If key is
     // used to identify contacts when fields (such as the name and address)
     // change.
-//    cellList = new CellList[ContactInfo](contactCell, ContactDatabase.KEY_PROVIDER)
-//    cellList.setPageSize(30)
-//    cellList.setKeyboardPagingPolicy(KeyboardPagingPolicy.INCREASE_RANGE)
-//    cellList.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION)
+    cellList = new CellList[ContactInfo](contactCell, ContactDatabase.KEY_PROVIDER)
+    cellList.setPageSize(30)
+    cellList.setKeyboardPagingPolicy(KeyboardPagingPolicy.INCREASE_RANGE)
+    cellList.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.BOUND_TO_SELECTION)
 
     // Add a selection model so we can select cells.
-//    val selectionModel = new SingleSelectionModel[ContactInfo](ContactDatabase.KEY_PROVIDER)
-//    cellList.setSelectionModel(selectionModel);
+    val selectionModel = new SingleSelectionModel[ContactInfo](ContactDatabase.KEY_PROVIDER)
+    cellList.setSelectionModel(selectionModel);
 //        selectionModel.addSelectionChangeHandler((_: SelectionChangeEvent) => {
 //            contactForm.setContact(selectionModel.getSelectedObject());
 //        })
+    selectionModel.addSelectionChangeHandler(new SelectionChangeEvent.Handler() {
+      def onSelectionChange(p1: SelectionChangeEvent) {
+        //contactForm.setContact(selectionModel.getSelectedObject());P
+        GWT.log("would call contactForm.setContact(selectionModel.getSelectedObject());")
+      }
+    })
 
     // Create the UiBinder.
     val uiBinder: Binder = GWT.create(classOf[Binder])
     val widget = uiBinder.createAndBindUi(this)
 
     // Add the CellList to the data provider in the database.
-//    ContactDatabase.getContactDatabase.addDataDisplay(cellList);
+    ContactDatabase.getContactDatabase.addDataDisplay(cellList);
 
     // Set the cellList as the display of the pagers. This example has two
     // pagers. pagerPanel is a scrollable pager that extends the range when the
     // user scrolls to the bottom. rangeLabelPager is a pager that displays the
     // current range, but does not have any controls to change the range.
-//    pagerPanel.setDisplay(cellList);
+    pagerPanel.setDisplay(cellList);
     //    rangeLabelPager.setDisplay(cellList);
 
     // Handle events from the generate button.
-//    generateButton.addClickHandler((_: ClickEvent) => ContactDatabase.getContactDatabase.generateContacts(50))
+    generateButton.addClickHandler((_: ClickEvent) => ContactDatabase.getContactDatabase.generateContacts(50))
 
     widget
   }

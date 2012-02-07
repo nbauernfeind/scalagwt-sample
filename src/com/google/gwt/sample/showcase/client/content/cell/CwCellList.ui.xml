@@ -31,15 +31,14 @@
                     <!--ui:field='contactForm'/>-->
                     <br/>
                     <g:Button ui:field='generateButton'>
-                    <!--<g:Button>-->
+                        <!--<g:Button>-->
                         <ui:msg key='cwCellListGenerateButton'>Generate 50 Contacts</ui:msg>
                     </g:Button>
                 </td>
             </tr>
             <tr>
                 <td align='center'>
-                    <!--<s:ShowMorePagerPanel-->
-                    <!--ui:field='pager'/>-->
+                    <s:ShowMorePagerPanel ui:field='pager'/>
                 </td>
             </tr>
         </table>
